@@ -1,7 +1,7 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://movies-explorer.alina.nomoreparties.sbs',
-  'http://movies-explorer.alina.nomoreparties.sbs',
+  'https://movies-explorer.alina.nomoredomains.sbs',
+  'http://movies-explorer.alina.nomoredomains.sbs',
   'https://localhost:3000',
   'http://localhost:3000',
   'https://localhost:3001',
