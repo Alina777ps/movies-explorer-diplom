@@ -3,7 +3,7 @@
 
 ## Ссылка проект на Яндекс Практикум
 
-IP 51.250.71.223
+IP 84.201.174.111
 
 https://movies-explorer.alina.nomoreparties.sbs
 

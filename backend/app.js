@@ -13,7 +13,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const router = require('./routes/index');
 
 const {
-  PORT = 3001,
+  PORT = 3000,
   BD = 'mongodb://127.0.0.1:27017/bitfilmsdb',
 } = process.env;
 
