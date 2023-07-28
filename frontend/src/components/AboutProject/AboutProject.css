@@ -1,0 +1,135 @@
+.aboutProject__gride {
+    margin: 70px 0 110px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 2;
+    gap: 26px 40px;
+    grid-template-areas:
+        "title-1 title-2"
+        "text-1 text-2";
+}
+
+.aboutProject__gride-title-1 {
+    grid-area: title-1;
+}
+
+.aboutProject__gride-title-2 {
+    grid-area: title-2;
+}
+
+.aboutProject__gride-text-1 {
+    grid-area: text-1;
+}
+
+.aboutProject__gride-text-2 {
+    grid-area: text-2;
+}
+
+.aboutProject__gride-title {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-size: 20px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+.aboutProject__gride-text {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-size: 14px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.aboutProject__table {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(2, 36px);
+ 
+}
+
+.aboutProject__table-text {
+    margin: 0;
+    padding: 0;
+    background: #303030;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+}
+
+.aboutProject__table-text_grin{
+    background: #3DDC84;
+    color: #000;
+}
+
+.aboutProject__table-text_black {
+    background: #202020;
+    color: #8B8B8B;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1000px) {
+    .aboutProject__gride {
+        margin-bottom: 93px;
+        gap: 22px 30px;
+    }
+
+    .aboutProject__gride-text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutProject__table-text_black {
+        font-weight: 400;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .aboutProject__gride {
+        margin: 20px 0 60px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+        "title-1"
+        "text-1"
+        "title-2" 
+        "text-2";
+        gap: 16px;
+    }
+
+    .aboutProject__gride-title {
+        margin-top: 42px;
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .aboutProject__gride-text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutProject__table {
+        grid-template-columns: 35.21% 64.79%;
+        grid-template-rows: repeat(2, 35px);
+    }
+
+    .aboutProject__table-text {
+        font-size: 11px;
+        line-height: 35px;
+    }
+
+}

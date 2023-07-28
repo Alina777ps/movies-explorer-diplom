@@ -1,0 +1,136 @@
+.navigation {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation__container-overlay {
+    width: 32.3%;
+  }
+
+.navigation__contaner {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 159px 0 92px;
+    background: #202020;
+    width: 67.7%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation__button-close {
+    position: absolute;
+    top: 22.44px;
+    right: 22.44px;
+    background: #202020;
+    border: none;
+    cursor: pointer;
+}
+
+.navigation__button-close:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}
+
+.navigation__nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.navigation__link {
+    color: #FFF;
+    text-align: center;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navigation__link:hover {
+    opacity: .6;
+}
+
+.navigation__account {
+    margin: 621px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+}
+
+.navigation__account-name {
+    color: #FFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.navigation__account-name:hover {
+    opacity: .6;
+}
+
+
+.navigation__account-img-frame {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+    background: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation__account-img-frame:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}
+
+@media screen and (max-width: 600px) {
+    .navigation__container-overlay {
+        display: none;
+      }
+
+      .navigation__contaner {
+        padding: 144px 0 48px;
+        width: 100%;
+    }
+
+    .navigation__button-close {
+        top: 13.44px;
+        right: 13.44px;
+    }
+    
+    .navigation__nav {
+        gap: 24px;
+    }
+    
+    .navigation__link:hover {
+        font-weight: 600;
+    }
+    
+    .navigation__account {
+        margin-top: 444px;
+    }
+}
+

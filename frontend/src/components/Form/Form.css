@@ -1,0 +1,126 @@
+.form__container {
+    margin: 0;
+    padding: 70px 34.53%;
+    height: 100%;
+}
+
+.form__title {
+    margin: 40px 0;
+    padding: 0;
+    color: #FFF;
+    font-size: 24px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.form__form {
+    width: 100%;
+}
+
+.form__fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__erorr {
+    height: 19px;
+    margin: 0;
+    padding: 0;
+    color: #EE3465;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form__submit {
+    width: 100%;
+    height: 45px;
+    margin: 50px 0 16px;
+    padding: 0;
+    border-radius: 3px;
+    border: none;
+    background: #4285F4;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.form__submit_inactive {
+    /*pointer-events: none;*/
+    background: #2F2F2F;
+    color: #EE3465;
+    border: 1px solid #EE3465;
+}
+
+.form__question {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; 
+    gap: 6px;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form__text {
+    margin: 0;
+    padding: 0;
+    color: #8B8B8B;
+}
+
+.form__link {
+    margin: 0;
+    padding: 0;
+    color: #4285F4;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 950px) {
+    .form__container {
+        padding: 232px 24.22%;
+    }
+    
+    .form__title {
+        margin: 40px 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form__container {
+        padding: 56px 9.38% 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form__title {
+        margin: 50px 0 80px;
+    }
+
+    .form__submit {
+        margin: 141px 0 14px;
+        font-size: 12px;
+    }
+
+    .form__question {
+        gap: 7px;
+        font-size: 12px;
+    }
+    
+}

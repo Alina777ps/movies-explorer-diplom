@@ -1,0 +1,25 @@
+.movies {
+    margin: 0;
+    padding: 0 5.47%;
+}
+
+.movies__active {
+    font-weight: 500;
+}
+
+.movies__burger-menu_active {
+    border-bottom: 2px solid #FFF;
+}
+
+@media screen and (max-width: 900px) {
+    .movies {
+        padding: 0 3.9%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .movies {
+        padding: 0 3.13%;
+    }
+}
+

@@ -1,0 +1,136 @@
+.moviesCard {
+    height: 134px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    background: #2F2F2F;
+}
+
+.moviesCard__info {
+    margin: 22px;
+    padding: 0;
+}
+
+.moviesCard__name {
+    height: 22px;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    grid-area: name;
+    /* white-space: nowrap; Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.moviesCard__time {
+    margin: 13px 0 30px;
+    padding: 0;
+    color: #8B8B8B;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    grid-area: time;
+}
+/*
+.moviesCard__button {
+    margin: 0;
+    padding: 0;
+    grid-area: button;
+    background: #2F2F2F;
+    border: none;
+    cursor: pointer;
+}
+
+.moviesCard__button:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}
+ */
+ 
+ .moviesCard__button-delete {
+    background-image: url("../../images/deleteButton.svg");
+ }
+
+.moviesCard__img {
+    max-width: 220px;
+    margin: 0;
+    padding: 6px;
+    object-fit: cover;
+}
+
+.moviesCard__button {
+    margin: 0;
+    padding: 0;
+    grid-area: button;
+    width: 14px;
+    height: 12px;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.moviesCard__button:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}
+
+
+.moviesCard__like-active {
+    background-image: url("../../images/like.svg");
+  }
+  
+  .moviesCard__like {
+    background-image: url(../../images/dislike.svg);
+  }
+
+  
+.moviesCard__button-delete {
+    background-image: url(../../images/deleteButton.svg);
+}
+
+@media screen and (max-width: 600px) {
+	.moviesCard {
+        height: 232px;
+        display: flex;
+        flex-direction: column-reverse;
+       
+        align-items: center;
+    }
+
+    .moviesCard__info {
+        margin: 10px 16px 10px 12px;
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: 1fr 14px;
+        grid-template-areas:
+            "name button"
+            "time .";
+        row-gap: 8px;
+    } 
+
+    .moviesCard__name {
+        height: 15px;
+        font-size: 12px;
+    }
+
+    .moviesCard__time {
+        margin: 0;
+    }
+
+    .moviesCard__img {
+        padding: 0;
+        max-width: 300px;
+        height: 168px;
+    }
+    
+}

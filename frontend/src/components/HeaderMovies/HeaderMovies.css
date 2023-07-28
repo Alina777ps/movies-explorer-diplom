@@ -1,0 +1,117 @@
+.headerMovies__tipe_movies {
+    background: #202020;
+}
+
+.headerMovies__link {
+    margin: 0 0 0 62px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.headerMovies__movies {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #FFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.headerMovies__movies:hover {
+    opacity: .6;
+}
+
+.headerMovies__profile-link {
+    margin: 0;
+    padding: 0;
+}
+
+.headerMovies__account {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #FFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+}
+
+.headerMovies__account:hover {
+    opacity: .6;
+}
+
+.headerMovies__account-img-frame {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+    background: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerMovies__account-img-frame:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}
+
+.headerMovies__account-img {
+    margin: 0;
+    padding: 0;
+}
+
+.headerMovies__hamburgerButton {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+
+    .headerMovies__tipe_movies {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .headerMovies__link {
+        display: none;
+    }
+
+    .headerMovies__profile-link {
+        display: none;
+    }
+
+    .headerMovies__hamburgerButton {
+        display: block;
+        background: #202020;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .headerMovies__hamburgerButton:hover {
+        transform: scale(1.2, 1.2);
+        opacity: .6;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .headerMovies__tipe_movies {
+        padding-bottom: 16px;
+    }
+
+    
+}
