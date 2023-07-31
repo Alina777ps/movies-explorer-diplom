@@ -4,10 +4,8 @@ import "./Form.css";
 import Logo from "../Logo/Logo.js";
 
 function Form({
-  name,
   formTitle,
   buttonName,
-  formSubmitType,
   formQuestion,
   formLinkName,
   formLink,
@@ -25,14 +23,13 @@ function Form({
         <fieldset className="form__fieldset">{children}</fieldset>
         <p className="form__erorr">{errorMessege}</p>
         <button
-          className={
-            isDisabled || isLoading
-              ? "form__submit form__submit_inactive"
-              : "form__submit"
-        }
+          className={`form__submit
+            ${isDisabled || isLoading
+              ? "form__submit_inactive"
+              : ""}`}
           type="submit" 
           aria-label={buttonName} 
-          disabled={isDisabled ? true : false}
+          disabled={isDisabled || isLoading}
         >
           {buttonName}
         </button>

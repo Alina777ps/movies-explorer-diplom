@@ -11,7 +11,9 @@ function SearchForm({ handleFilterMovies, isShortMovie, searchMovie }) {
 
   const location = useLocation();
 
+//хранение запроса
   const [isRequest, setIsRequest] = React.useState("");
+// ошибка запроса
   const [isRequestError, setIsRequestError] = React.useState(false);
 
   function handleChange(e) {
@@ -31,25 +33,24 @@ function SearchForm({ handleFilterMovies, isShortMovie, searchMovie }) {
   React.useEffect(() => {
     if (
       location.pathname === "/movies" &&
-      localStorage.getItem("searchMovies")
+      localStorage.getItem("searchMovie")
     ) {
-      const savedMovies = localStorage.getItem("searchMovies")
+      const savedMovies = localStorage.getItem("searchMovie")
       setIsRequest(savedMovies)
     }
   }, [location])
 
   return (
     <div className="searchForm">
-     
       <form className="searchForm__form" onSubmit={handleSubmit} noValidate>
         <div className="searchForm__block">
           <img className="searchForm__img" src={searchFormImg} alt="Лупа" />
           <input
-            className={`searchForm__input-string ${isRequestError ? "searchForm__input-error" : ""}`}
+            className="searchForm__input-string"
             type="text"
             name="movie"
             id="movie"
-            placeholder={isRequestError ? "Нужно ввести ключевое слово" : "Фильм"}
+            placeholder="Фильм"
             value={isRequest || ""} 
             onChange={handleChange}
             required
@@ -67,6 +68,7 @@ function SearchForm({ handleFilterMovies, isShortMovie, searchMovie }) {
         handleFilterMovies={handleFilterMovies}
         isShortMovie={isShortMovie}
       />
+      <p className="searchForm__input-error">{isRequestError ? "Нужно ввести ключевое слово" : ""}</p>
     </div>
   );
 }

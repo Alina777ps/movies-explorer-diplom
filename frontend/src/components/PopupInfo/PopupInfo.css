@@ -1,0 +1,115 @@
+.popupinfo {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    transition: visibility 0.5s, opacity 0.5s linear;
+  }
+  
+  .popupinfo__opened {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popupinfo__container {
+    position: relative;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 34px 36px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    align-items: center;
+    color:black;
+  }
+
+  .popupinfo__close-button {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: -40px;
+    right: -40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .popupinfo__close-button:hover {
+    opacity: 0.6;
+  }
+  
+  .popupinfo__close-button:before {
+    position: absolute;
+    content: '';
+    height: 35px;
+    border: 2px solid #fff;
+    top: 0;
+    transform: rotate(45deg);
+  }
+  
+  .popupinfo__close-button:after {
+    position: absolute;
+    content: '';
+    height: 35px;
+    border: 2px solid #fff;
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .popupinfo__title {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 26px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    font-family: "Inter", "Arial", sans-serif;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .popupinfo__container {
+      max-width: 282px;
+      padding: 25px 22px;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .popupinfo__close-button {
+      width: 20px;
+      height: 20px;
+      right: 0;
+    }
+  
+    .popupinfo__close-button:before {
+      height: 28px;
+      border-width: 1px;
+    }
+  
+    .popupinfo__close-button:after {
+      height: 28px;
+      border-width: 1px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 767px) {
+    .popupinfo__title {
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 25px;
+    }
+  }

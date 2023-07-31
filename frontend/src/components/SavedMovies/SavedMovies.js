@@ -3,12 +3,12 @@ import "./SavedMovies.css";
 
 import { filterShotMovies, filterMovies } from "../../utils/utils";
 
-import HeaderMovies from "../HeaderMovies/HeaderMovies.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
+import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 
-function SavedMovies({ savedMovies, onDeleteMovie }) {
+function SavedMovies({ savedMovies, onDeleteMovie, loggedIn }) {
   // savedMovies: Массив сохраненных фильмов
   // onClickButton: Функция для удаления сохраненного фильма
 
@@ -17,7 +17,7 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
   // вклячение/выключение фильтра короткометражных фильмов
   const [isShortMovie, setIsShortMovie] = React.useState(false)
   // список сохраненных фильмов пустой
-  const [isNotFoundMovie, setisNotFoundMovie] = React.useState(false)
+  const [isNotFoundMovie, setisNotFoundMovie] = React.useState(false);
   // введенный запрос
   const [searchRequest, setSearchRequest] = React.useState("")
 
@@ -51,9 +51,12 @@ function SavedMovies({ savedMovies, onDeleteMovie }) {
 
   return (
     <div>
-      <HeaderMovies
-        savedMoviesActive="savedMovies__active"
-        navigationSavedMovies="movies__burger-menu_active"
+      <Header 
+        loggedIn={loggedIn} 
+        headerMain="savedMovies__color-black" 
+        activeSavedMovies="savedMovies__link-active" 
+        navigationSavedMovies="savedMovies__burger-menu_active"
+        hamburgerButtonImg="savedMovies__color-black"
       />
       <div className="savedMovies">
         <SearchForm 

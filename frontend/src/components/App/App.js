@@ -11,6 +11,7 @@ import Register from "../Register/Register.js";
 import Login from "../Login/Login.js";
 import Profile from "../Profile/Profile.js";
 import NotFound from "../NotFound/NotFound.js";
+import PopupInfo from "../PopupInfo/PopupInfo";
 
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 
@@ -21,10 +22,16 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [errorMessege, setErrorMessege] = React.useState("");
-
+//состояние авторизации
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [isTokenChecked, setIsTokenChecked] = React.useState(false);
+  //const [isTokenChecked, setIsTokenChecked] = React.useState(false);
+  //загрузка
   const [isLoading, setIsLoading] = React.useState(false);
+  //успешное выполнение операции
+  const [isSuccess, setIsSuccess] = React.useState(false);
+  //открытие попапа с информацией о редактировании профиля
+  const [isPopupInfoOpen, setIsPopupInfoOpen] = React.useState(false);
+  
 
   const [currentUser, setCurrentUser] = React.useState({
     name: "",
@@ -42,10 +49,14 @@ function App() {
       .register(name, email, password)
       .then((user) => {
         setCurrentUser(user);
+        setIsPopupInfoOpen(true);
+        setIsSuccess(true);
         handleSubmitLogin(email, password)
       })
       .catch((err) => {
         setErrorMessege(err);
+        setIsPopupInfoOpen(true);
+        setIsSuccess(false);
       })
       .finally(() => {
         setIsLoading(false);
@@ -63,6 +74,8 @@ function App() {
       .then((user) => {
         if (user.token) {
           localStorage.setItem("jwt", user.token);
+          setIsPopupInfoOpen(true);
+          setIsSuccess(true);
           setLoggedIn(true)
           setCurrentUser(user);
           navigate("/movies", { replace: true });
@@ -70,6 +83,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err.message);
+        setIsPopupInfoOpen(true);
+        setIsSuccess(false);
         setErrorMessege(err.message);
       })
       .finally(() => {
@@ -80,11 +95,11 @@ function App() {
   const tokenCheck = () => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
+      setIsLoading(true);
       auth
         .checkToken(jwt)
         .then(() => {
           setLoggedIn(true)
-          setIsTokenChecked(true);
           navigate(location.pathname, { replace: true });
       }) 
         .catch((error) => console.log(`Произошла ошибка: ${error}`))
@@ -98,14 +113,6 @@ function App() {
   React.useEffect(() => {
     tokenCheck();
   }, []);
-
-//проверяем токен
-  React.useEffect(() => {
-    if (setIsTokenChecked(false))
-    {setIsLoading(true)} 
-    else 
-    {setIsLoading(true)}
-  }, [setIsTokenChecked, setIsLoading]);
 
   //выход из аккаунта
   function goOut() {
@@ -127,20 +134,16 @@ function App() {
 
   //получение информации о пользователе
   React.useEffect(() => {
-    setIsLoading(true);
     loggedIn &&
       mainApi
         .getUserInfo()
         .then((user) => setCurrentUser(user))
         .catch((error) => console.log(`Произошла ошибка: ${error}`))
-        .finally(() => {
-          setIsLoading(false);
-        })
   }, [loggedIn, navigate]);
 
   //получение массива фильмов
   React.useEffect(() => {
-    setIsLoading(true);
+    //setIsLoading(true);
     loggedIn &&
     mainApi
         .getMovies()
@@ -148,9 +151,6 @@ function App() {
           setSavedMovies(moviesData.reverse())
         })
         .catch((error) => console.log(`Произошла ошибка: ${error}`))
-        .finally(() => {
-          setIsLoading(false);
-        })
   }, [loggedIn, navigate]);
 
   //редактирование профиля
@@ -159,9 +159,13 @@ function App() {
     mainApi
       .setUserInfo(data)
       .then((user) => {
+        setIsPopupInfoOpen(true);
+        setIsSuccess(true);
         setCurrentUser(user);
       })
       .catch((err) => {
+        setIsPopupInfoOpen(true);
+        setIsSuccess(false);
         console.log(err)
       })
       .finally(() => setIsLoading(false));
@@ -186,7 +190,6 @@ function App() {
     mainApi
       .deleteMovie(movie._id)
       .then(() => {
-        
         setSavedMovies((state) => state.filter((item) => item._id !== movie._id))
       })
       .catch((err) => {
@@ -195,18 +198,22 @@ function App() {
       })
   }
 
+  function closePopup() {
+    setIsPopupInfoOpen(false)
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__container">
           <Routes>
-            <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main loggedIn={loggedIn} />} />
             <Route
               path="/movies"
               element={
-                <ProtectedRouteElement 
+                <ProtectedRouteElement
                   element={Movies} 
-                  loggedIn={loggedIn} 
+                  loggedIn={loggedIn}   
                   savedMovies={savedMovies} 
                   onDeleteMovie={onDeleteMovie} 
                   onAddMovie={onAddMovie} 
@@ -266,6 +273,11 @@ function App() {
             />
             <Route path="/*" element={<NotFound />} />
           </Routes>
+          <PopupInfo
+            isOpen={isPopupInfoOpen}
+            onClose={closePopup}
+            isSuccess={isSuccess}
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>

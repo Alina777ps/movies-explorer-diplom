@@ -1,12 +1,15 @@
 import React from "react";
 import "./Profile.css";
+import Header from "../Header/Header.js";
 
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useForm } from '../../hooks/useForm';
 
-import HeaderMovies from "../HeaderMovies/HeaderMovies.js";
+function Profile({ onUpdateUser, goOut, isLoading, loggedIn }) {
 
-function Profile({ onUpdateUser, goOut, isLoading }) {
+  const [isLastValues, setIsLastValues] = React.useState(false);
+  const [errorMessages, setErrorMessages] = React.useState(" ");
+  
 
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -24,12 +27,15 @@ function Profile({ onUpdateUser, goOut, isLoading }) {
     }
   }, [currentUser, setValues])
 
-
   function handleSubmit(e) {
     e.preventDefault();
+    if ((values.name !== currentUser.name) || (values.email !== currentUser.email)) {
     onUpdateUser({
       name: values.name, email: values.email
-    });
+      });
+    } else {
+      setErrorMessages("Вы не изменили свои данные. Сохранение отменено")
+  }
   }
 
   // очистка формы при обновлении пользователя
@@ -39,9 +45,21 @@ function Profile({ onUpdateUser, goOut, isLoading }) {
     }
   }, [currentUser, updateForm])
 
+  React.useEffect(() => {
+    if (
+      currentUser.name === values.name &&
+      currentUser.email === values.email
+    ) {
+      setIsLastValues(true)
+    } else {
+      setIsLastValues(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values])
+
   return (
     <div>
-      <HeaderMovies />
+      <Header loggedIn={loggedIn} headerMain="profile__color-black" hamburgerButtonImg="profile__color-black" />
       <div className="profile">
         <h2 className="profile__title">Привет, {currentUser.name}!</h2>
         <form className="profile__form" onSubmit={handleSubmit} id="form" noValidate>
@@ -62,6 +80,7 @@ function Profile({ onUpdateUser, goOut, isLoading }) {
                 required
                 minLength="2"
                 maxLength="40"
+                disabled={isLoading}
               ></input>
               <span className="profile__input-error name-error">{errors.name}</span>
             </label>
@@ -81,10 +100,12 @@ function Profile({ onUpdateUser, goOut, isLoading }) {
                 required
                 minLength="2"
                 maxLength="40"
+                disabled={isLoading}
               ></input>
               <span className="input-error name-error"></span>
             </label>
           </fieldset>
+          <p className="profile__error-message">{errorMessages}</p>
           <button
           className={
             !isFormValid || isLoading
@@ -93,7 +114,7 @@ function Profile({ onUpdateUser, goOut, isLoading }) {
           }
             type="submit"
             aria-label="Редактировать"
-            disabled={!isFormValid ? true : false}
+            disabled={isLoading}
           >
             Редактировать
           </button>

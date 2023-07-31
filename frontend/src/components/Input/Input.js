@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.css";
 
-function Input({ id, placeholder, type, name, value, changeInput, errors }) {
+function Input({ id, placeholder, type, name, value, pattern, changeInput, errors, isLoading }) {
   return (
     <label className="input__label" htmlFor={id}>
       {placeholder}
@@ -16,6 +16,8 @@ function Input({ id, placeholder, type, name, value, changeInput, errors }) {
         required
         minLength="2"
         maxLength="40"
+        pattern={pattern}
+        disabled={isLoading}
       ></input>
       <span className={`input-error ${name}-error`}>{errors}</span>
     </label>

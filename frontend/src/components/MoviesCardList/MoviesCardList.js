@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 
+import { SCREEN_SIZE_DESKTOP, SCREEN_SIZE_TABLET } from "../../utils/constants";
+
 
 import MoviesCard from "../MoviesCard/MoviesCard.js";
 import Preloader from "../Preloader/Preloader";
@@ -24,19 +26,9 @@ function MoviesCardList({
   function shownCards() {
     const display = window.innerWidth;
     if (display > 600) {
-      setIsShownMovies(7);
+      setIsShownMovies(SCREEN_SIZE_DESKTOP);
     } else {
-      setIsShownMovies(5);
-    }
-  }
-
-  // количество карточек на экране при нажатии на кнопку "Ещё"
-  function showStillCards() {
-    const display = window.innerWidth;
-    if (display > 600) {
-      setIsShownMovies(isShownMovies + 1);
-    } else {
-      setIsShownMovies(isShownMovies + 1);
+      setIsShownMovies(SCREEN_SIZE_TABLET);
     }
   }
 
@@ -44,9 +36,20 @@ function MoviesCardList({
     shownCards();
   }, []);
 
+  // количество карточек на экране при нажатии на кнопку "Ещё"
+  function showStillCards() {
+    const display = window.innerWidth;
+    if (display > 600) {
+      setIsShownMovies(isShownMovies + SCREEN_SIZE_DESKTOP);
+    } else {
+      setIsShownMovies(isShownMovies + SCREEN_SIZE_TABLET);
+    }
+  }
+
   React.useEffect(() => {
     setTimeout(() => {
       window.addEventListener("resize", shownCards);
+      window.removeEventListener("resize", shownCards);
     }, 500);
   });
 
@@ -56,7 +59,7 @@ function MoviesCardList({
 
   return (
     <>
-      {<Preloader isLoading={isLoading} />}
+      {isLoading && <Preloader isLoading={isLoading} />}
       {isNotFoundMovie && !isLoading && (
         <SearchError textError={"Ничего не найдено"} />
       )} 

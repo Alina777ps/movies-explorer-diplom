@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
             
 .searchForm__input-string {
@@ -40,6 +41,7 @@
     font-weight: 400;
     line-height: 20px;
     border: none;
+    
 }
 
 .searchForm__input-string:focus {
@@ -48,6 +50,9 @@
 
   .searchForm__input-error {
     color: #EE3465;
+    position: absolute;
+    left: 5.47%;
+    top: 230px;
 }
                      
 .searchForm__button {
@@ -71,6 +76,10 @@
     .searchForm__form {
         width: 71%;
         padding-right: 19px;
+    }
+
+    .searchForm__input-error {
+        left: 3.9%;
     }
     
 }
@@ -97,6 +106,10 @@
 
     .searchForm__input-string {
       font-size: 14px;
+    }
+
+    .searchForm__input-error {
+        left: 3.13%;
     }
     
 }

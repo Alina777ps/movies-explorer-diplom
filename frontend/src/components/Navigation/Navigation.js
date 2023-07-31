@@ -5,7 +5,7 @@ import "./Navigation.css";
 import buttonClose from "../../images/buttonClose.svg";
 import account from "../../images/account.svg";
 
-function Navigation({ closeMenu, navigationMovies, navigationSavedMovies }) {
+function Navigation({ closeMenu, navigationMovies, navigationSavedMovies, navigationMain }) {
 
   // обработчик оверлея
   const handleOverlay = (e) => {
@@ -26,7 +26,7 @@ function Navigation({ closeMenu, navigationMovies, navigationSavedMovies }) {
           />
         </button>
         <nav className="navigation__nav">
-          <Link className="navigation__link" to="/">
+          <Link className={`navigation__link ${navigationMain}`} to="/">
             Главная
           </Link>
           <Link className={`navigation__link ${navigationMovies}`} to="/movies">

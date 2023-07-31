@@ -4,15 +4,12 @@ import "./Movies.css";
 import * as MoviesApi from "../../utils/MoviesApi";
 import { filterShotMovies, filterMovies } from "../../utils/utils";
 
-/*import like from "../../images/like.svg";*/
-//import dislike from '../../images/dislike.svg';
-
-import HeaderMovies from "../HeaderMovies/HeaderMovies.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
+import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 
-function Movies({ savedMovies, onDeleteMovie, onAddMovie }) {
+function Movies({ savedMovies, onDeleteMovie, onAddMovie, loggedIn }) {
   // savedMovies: Массив сохраненных фильмов
   // onClickButton: Функция для добавления или удаления сохраненного фильма
 
@@ -23,7 +20,7 @@ function Movies({ savedMovies, onDeleteMovie, onAddMovie }) {
   const [isSearchResultMovie, setIsSearchResultMovie] = React.useState([]) // массив фильмов
   const [filteredMovies, setFilteredMovies] = React.useState([]) // отфильтрованные фильмы
   const [isShortMovie, setIsShortMovie] = React.useState(false) // короткометражные фильмы
-
+  
   // установка фильтра по продолжительности фильмов при поиске
   function installingShortMovieSearch(movies, query, short) {
     const moviesCardList = filterMovies(movies, query, short)
@@ -93,8 +90,6 @@ function Movies({ savedMovies, onDeleteMovie, onAddMovie }) {
       } else {
         setFilteredMovies(movies)
       }
-    } else {
-      setIsNotFoundMovie(true);
     }
   }, [])
 
@@ -113,9 +108,12 @@ function Movies({ savedMovies, onDeleteMovie, onAddMovie }) {
 
   return (
     <div>
-      <HeaderMovies
-        moviesActive="movies__active"
+      <Header 
+        loggedIn={loggedIn} 
+        headerMain="movies__color-black" 
+        activeMovies="movies__link-active" 
         navigationMovies="movies__burger-menu_active"
+        hamburgerButtonImg="movies__color-black"
       />
       <div className="movies">
         <SearchForm 

@@ -3,7 +3,11 @@
     padding: 0 5.47%;
 }
 
-.movies__active {
+.movies__color-black {
+    background: #202020;
+}
+
+.movies__link-active {
     font-weight: 500;
 }
 

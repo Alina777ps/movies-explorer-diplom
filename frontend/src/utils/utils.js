@@ -1,3 +1,5 @@
+import { DURATION_SHORT_FILM } from "./constants";
+
 //перевод запроса в строке поиска в необходимый вид
 export function filterMovies(movies, query) {
     const moviesQuery = movies.filter((movie) => {
@@ -13,5 +15,5 @@ export function filterMovies(movies, query) {
   
   //фильтрация короткометражных фильмов
   export function filterShotMovies(movies) {
-    return movies.filter((movie) => movie.duration < 40)
+    return movies.filter((movie) => movie.duration < DURATION_SHORT_FILM)
   }

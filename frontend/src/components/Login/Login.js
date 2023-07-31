@@ -2,6 +2,7 @@ import React from "react";
 import "./Login.css";
 
 import { useForm } from '../../hooks/useForm';
+import { EMAIL_PATTERN } from "../../utils/constants";
 
 import Form from "../Form/Form.js";
 import Input from "../Input/Input.js";
@@ -41,7 +42,10 @@ function Login({ handleSubmitLogin, errorMessege, isLoading }) {
         name="email" 
         value={values.email}
         changeInput={handleChange}
-        errors={errors.email} />
+        errors={errors.email}
+        pattern={EMAIL_PATTERN}
+        isLoading={isLoading}
+         />
       <Input
         id="password"
         placeholder="Пароль"
@@ -50,6 +54,7 @@ function Login({ handleSubmitLogin, errorMessege, isLoading }) {
         value={values.password}
         changeInput={handleChange}
         errors={errors.password}
+        isLoading={isLoading}
       />
     </Form>
   );

@@ -2,6 +2,7 @@ import React from "react";
 
 import Form from "../Form/Form.js";
 import Input from "../Input/Input.js";
+import { EMAIL_PATTERN } from "../../utils/constants";
 
 import { useForm } from '../../hooks/useForm';
 
@@ -15,7 +16,7 @@ function Register({ errorMessege, handleSubmitRegister, isLoading }) {
     
     const handleSubmit = (e) => {
     e.preventDefault();
-    handleSubmitRegister(values.name, values.email, values.password)
+    handleSubmitRegister(values.name, values.email, values.password);
   };
   
   return (
@@ -39,6 +40,7 @@ function Register({ errorMessege, handleSubmitRegister, isLoading }) {
         value={values.name || ""} 
         changeInput={handleChange}
         errors={errors.name}
+        isLoading={isLoading}
       />
       <Input 
         id="email" 
@@ -48,6 +50,8 @@ function Register({ errorMessege, handleSubmitRegister, isLoading }) {
         value={values.email} 
         changeInput={handleChange}
         errors={errors.email}
+        pattern={EMAIL_PATTERN}
+        isLoading={isLoading}
       />
       <Input
         id="password"
@@ -57,6 +61,7 @@ function Register({ errorMessege, handleSubmitRegister, isLoading }) {
         value={values.password}
         changeInput={handleChange}
         errors={errors.password}
+        isLoading={isLoading}
       />
     </Form>
   );

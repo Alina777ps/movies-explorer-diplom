@@ -1,17 +1,22 @@
 import React from "react";
 import "./Main.css";
 
-import HeaderMain from "../HeaderMain/HeaderMain.js";
+import Header from "../Header/Header.js";
 import Promo from "../Promo/Promo.js";
 import AboutProject from "../AboutProject/AboutProject.js";
 import Techs from "../Techs/Techs.js";
 import AboutMe from "../AboutMe/AboutMe.js";
 import Footer from "../Footer/Footer.js";
 
-function Main() {
+function Main({ loggedIn }) {
   return (
-    <div>
-      <HeaderMain />
+    <>
+      <Header 
+        loggedIn={loggedIn} 
+        headerMain="main__color-blue" 
+        navigationMain="main__burger-menu_active"
+        hamburgerButtonImg="main__color-blue"
+       />
       <main>
         <Promo />
         <AboutProject />
@@ -19,7 +24,7 @@ function Main() {
         <AboutMe />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
