@@ -1,0 +1,16 @@
+.logo {
+    margin: 0;
+    padding: 0;
+}
+
+.logo__img {
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    padding: 0;
+}
+
+.logo__img:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}

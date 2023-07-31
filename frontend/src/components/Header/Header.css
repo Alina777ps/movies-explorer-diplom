@@ -1,0 +1,196 @@
+.header {
+    max-height: 74px;
+    margin: 0;
+    padding: 18px 5.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__link {
+    margin: 0 0 0 62px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__movies {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #FFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.header__movies:hover {
+    opacity: .6;
+}
+
+.header__profile-link {
+    margin: 0;
+    padding: 0;
+}
+
+.header__account {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #FFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+}
+
+.header__account:hover {
+    opacity: .6;
+}
+
+.header__account-img-frame {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+    background: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__account-img-frame:hover {
+    transform: scale(1.2, 1.2);
+    opacity: .6;
+}
+
+.header__account-img {
+    margin: 0;
+    padding: 0;
+}
+
+.header__hamburgerButton {
+    display: none;
+}
+
+.header__nav {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+} 
+.header__signup {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header__signin {
+    width: 76px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
+    background: #3DDC84;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+.header__signup:hover, .header__signin:hover {
+    opacity: .6;
+}
+
+
+@media screen and (max-width: 900px) {
+    .header {
+        padding: 18px 3.9%;
+    }
+
+    .header__nav {
+        font-size: 12px;
+    }
+
+    .header__nav {
+        font-size: 12px;
+    }
+
+    .header__tipe_movies {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .header__link {
+        display: none;
+    }
+
+    .header__profile-link {
+        display: none;
+    }
+
+    .header__hamburgerButton {
+        display: block;
+        border: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .header__hamburgerButton:hover {
+        transform: scale(1.2, 1.2);
+        opacity: .6;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        padding: 18px 3.1%;
+    }
+    .header__nav {
+        font-size: 10px;
+        line-height: 26px;
+        gap: 14px;
+    }
+
+    .header__signin {
+        width: 54px;
+        height: 26px;
+    }
+
+    .header__nav {
+        font-size: 10px;
+        line-height: 26px;
+        gap: 14px;
+    }
+
+    .header__signin {
+        width: 54px;
+        height: 26px;
+    }
+
+    .header__tipe_movies {
+        padding-bottom: 16px;
+    }
+}
+
+

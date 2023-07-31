@@ -1,0 +1,43 @@
+.section {
+    margin: 0;
+    padding: 110px 5.5%;
+    position: relative;
+}
+
+.section__line {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #DADADA;
+}
+
+.section__title {
+    margin: 0 0 23px;
+    padding: 0;
+    color: #FFF;
+    font-size: 22px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+}
+
+@media screen and (max-width: 1000px) {
+    .section {
+        padding: 90px 6.5%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .section {
+        padding: 70px 5.6%;
+    }
+
+    .section__title {
+        margin-bottom: 28px;
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+}
