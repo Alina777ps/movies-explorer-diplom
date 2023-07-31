@@ -30,6 +30,7 @@ function Profile({ onUpdateUser, goOut, isLoading, loggedIn }) {
   function handleSubmit(e) {
     e.preventDefault();
     if ((values.name !== currentUser.name) || (values.email !== currentUser.email)) {
+      setErrorMessages("")
     onUpdateUser({
       name: values.name, email: values.email
       });
