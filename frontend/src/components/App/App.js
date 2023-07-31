@@ -29,6 +29,8 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   //успешное выполнение операции
   const [isSuccess, setIsSuccess] = React.useState(false);
+  //сообщение о успешном выполнение операции
+  const [isSuccessMessege, setIsSuccessMessege] = React.useState("Успешно выполенено!");
   //открытие попапа с информацией о редактировании профиля
   const [isPopupInfoOpen, setIsPopupInfoOpen] = React.useState(false);
   
@@ -51,6 +53,7 @@ function App() {
         setCurrentUser(user);
         setIsPopupInfoOpen(true);
         setIsSuccess(true);
+        setIsSuccessMessege("Регистрация успешно выполнена! Добро пожаловать !")
         handleSubmitLogin(email, password)
       })
       .catch((err) => {
@@ -76,6 +79,7 @@ function App() {
           localStorage.setItem("jwt", user.token);
           setIsPopupInfoOpen(true);
           setIsSuccess(true);
+          setIsSuccessMessege("Вход в аккаунт успешно выполнен!  Добро пожаловать !")
           setLoggedIn(true)
           setCurrentUser(user);
           navigate("/movies", { replace: true });
@@ -161,6 +165,7 @@ function App() {
       .then((user) => {
         setIsPopupInfoOpen(true);
         setIsSuccess(true);
+        setIsSuccessMessege("Редактирование данных успешно выполнено !")
         setCurrentUser(user);
       })
       .catch((err) => {
@@ -277,6 +282,7 @@ function App() {
             isOpen={isPopupInfoOpen}
             onClose={closePopup}
             isSuccess={isSuccess}
+            successMessege={isSuccessMessege}
           />
         </div>
       </div>

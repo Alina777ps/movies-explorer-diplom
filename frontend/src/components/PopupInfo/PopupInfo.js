@@ -1,7 +1,7 @@
 import React from "react";
 import "./PopupInfo.css";
 
-const PopupInfo = ({ isSuccess, isOpen, onClose }) => {
+const PopupInfo = ({ isSuccess, isOpen, onClose, successMessege }) => {
   // внутри указываем `useEffect` для обработчика `Escape`
   React.useEffect(() => {
     // ограничиваем навешивание обработчика: если не открыт, то не нужно навешивать
@@ -35,7 +35,7 @@ const PopupInfo = ({ isSuccess, isOpen, onClose }) => {
       {isSuccess ? (
         <>
           <p className="popupinfo__title">
-            Успешно выполнено!
+            {successMessege}
           </p>
         </>
       ) : (
