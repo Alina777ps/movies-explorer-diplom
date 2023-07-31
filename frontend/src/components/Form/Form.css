@@ -58,7 +58,7 @@
 }
 
 .form__submit_inactive {
-    /*pointer-events: none;*/
+    pointer-events: none;
     background: #2F2F2F;
     color: #EE3465;
     border: 1px solid #EE3465;

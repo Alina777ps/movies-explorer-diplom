@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./MoviesCardList.css";
 
-import { SCREEN_SIZE_DESKTOP, SCREEN_SIZE_TABLET } from "../../utils/constants";
+import { DESKTOP_SHOWS_CARDS, TABLET_SHOWS_CARDS, SCREEN_SIZE_TABLET } from "../../utils/constants";
 
 
 import MoviesCard from "../MoviesCard/MoviesCard.js";
@@ -25,10 +25,10 @@ function MoviesCardList({
   // количество карточек на экране в зависимости от размера экрана
   function shownCards() {
     const display = window.innerWidth;
-    if (display > 600) {
-      setIsShownMovies(SCREEN_SIZE_DESKTOP);
+    if (display > SCREEN_SIZE_TABLET) {
+      setIsShownMovies(DESKTOP_SHOWS_CARDS);
     } else {
-      setIsShownMovies(SCREEN_SIZE_TABLET);
+      setIsShownMovies(TABLET_SHOWS_CARDS);
     }
   }
 
@@ -39,18 +39,20 @@ function MoviesCardList({
   // количество карточек на экране при нажатии на кнопку "Ещё"
   function showStillCards() {
     const display = window.innerWidth;
-    if (display > 600) {
-      setIsShownMovies(isShownMovies + SCREEN_SIZE_DESKTOP);
+    if (display > SCREEN_SIZE_TABLET) {
+      setIsShownMovies(isShownMovies + DESKTOP_SHOWS_CARDS);
     } else {
-      setIsShownMovies(isShownMovies + SCREEN_SIZE_TABLET);
+      setIsShownMovies(isShownMovies + TABLET_SHOWS_CARDS);
     }
   }
 
   React.useEffect(() => {
     setTimeout(() => {
       window.addEventListener("resize", shownCards);
-      window.removeEventListener("resize", shownCards);
-    }, 500);
+      }, 500);
+      return () => {
+        window.removeEventListener('resize', shownCards);
+      }
   });
 
   function showSavedMovie(savedMovies, movie) {

@@ -112,7 +112,8 @@
 }
 
 .profile__button-edit_inactive {
-    color: #EE3465;
+    color:  #313131;
+    pointer-events: none;
 }
 
 .profile__button-edit:hover {
